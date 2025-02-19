@@ -6,11 +6,10 @@ from .serializers import DrinkSerializer
 
 # Create your views here.
 
-class DrinksList(View):
-    def get(self, request):
-        drinks = Drinks.objects.all()
-        serializer = DrinkSerializer(drinks, many=True).data
+def drink_list(request):
+    drinks = Drinks.objects.all()
+    serializer = DrinkSerializer(drinks, many=True).data
 
-        return JsonResponse({"drinks": serializer}, safe = False)
+    return JsonResponse({"drinks": serializer})
 
 
